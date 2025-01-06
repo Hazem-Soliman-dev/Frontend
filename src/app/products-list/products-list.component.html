@@ -1,0 +1,6 @@
+<div *ngFor="let product of products">
+  <img [src]="imageURL + product.imgeURL" />
+  <p>{{ product.name }}</p>
+  <p>{{ product.desc }}</p>
+  <p>Price: {{ product.price }}</p>
+</div>

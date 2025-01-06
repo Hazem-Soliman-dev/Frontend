@@ -1,0 +1,137 @@
+<div class="body">
+    <div class="form-container" >
+      <form (ngSubmit)="signup()" [formGroup] ="joinusForm">
+        <h2>Join US</h2>
+        
+        <!-- Text Input -->
+        <div class="form-group">
+          <label for="text">Username</label>
+          <input type="text" placeholder="Username" formControlName="username">
+          <div class="msg" *ngIf="joinusForm.get('username')!.invalid && joinusForm.get('username')!.touched">
+            <span *ngIf="joinusForm.get('username')!.errors?.['required']">*username is required</span>
+            <span *ngIf="joinusForm.get('username')!.errors?.['minlength']">*username min chars should be 5</span>
+             
+          </div>
+        </div>
+        
+        <!-- Password Input -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter password" formControlName="password">
+          <div class="msg" *ngIf="joinusForm.get('password')!.invalid && joinusForm.get('password')!.touched">
+            <span *ngIf="joinusForm.get('password')!.errors?.['required']">*password is required</span>
+            <span *ngIf="joinusForm.get('password')!.errors?.['passwordstrength']">*pasword must contains uppercase/lowercase/numbers and 8 chars</span>
+          </div>
+        </div>
+  
+        <!-- Re-type Password Input -->
+
+        <div class="form-group">
+          <label for="password">Re-type Password</label>
+          <input type="password" placeholder="Re-type Password" formControlName="retypepassword" [ngClass]="{'ng-invalid' : joinusForm.errors?.['passworddismatch'] && joinusForm.get('retypepassword')!.touched}">
+
+          <div class="msg" *ngIf="joinusForm.get('retypepassword')!.touched">
+            <span *ngIf="joinusForm.get('retypepassword')!.errors?.['required']">*retypepassword is required</span>
+            <span *ngIf="joinusForm.errors?.['passworddismatch']">*retypepassword not match with password</span>
+          </div>
+        </div>
+
+
+
+        <!-- <div class="form-group">
+          <label for="password">Re-type Password</label>
+          <input type="password" placeholder="Re-type Password" formControlName="retypepassword">
+          <div class="msg" *ngIf="joinusForm.get('retypepassword')!.invalid && joinusForm.get('retypepassword')!.touched">
+            <span *ngIf="joinusForm.get('retypepassword')!.errors?.['required']">*retypepassword is required</span>
+            <span *ngIf="joinusForm.get('retypepassword')!.errors?.['passworddismatch']">*retypepassword not match with password</span>
+          </div>
+        </div> -->
+        
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" placeholder="Enter email" formControlName="email">
+          <div class="msg" *ngIf="joinusForm.get('email')!.invalid && joinusForm.get('email')!.touched">
+            <span *ngIf="joinusForm.get('email')!.errors?.['required']">*email is required</span>
+            <span *ngIf="joinusForm.get('email')!.errors?.['email']">*wrong email format</span>
+          </div>
+        </div>
+        
+        <!-- Number Input -->
+        <div class="form-group">
+          <label for="number">Age</label>
+          <input type="number" placeholder="Age" name="age">
+        </div>
+        
+        <!-- Date Input -->
+        <div class="form-group">
+          <label for="date">Birth Date</label>
+          <input type="date" name="birthDate">
+        </div>
+        
+        <!-- URL Input -->
+        <div class="form-group">
+          <label for="url">LinkedIn URL</label>
+          <input type="url" placeholder="LinkedIn URL" name="linkedInURL">
+        </div>
+        
+        <!-- Telephone Input -->
+        <div class="form-group">
+          <label for="tel">Phone NO.</label>
+          <input type="tel" placeholder="Phone NO." name="phone">
+        </div>
+        
+        <!-- File Input -->
+        <div class="form-group">
+          <label for="file">Your C.V</label>
+          <input type="file" name="cv">
+        </div>
+        
+        <!-- Radio Buttons -->
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="form-group-inline">
+            <input type="radio" id="radio1" name="gender" value="female"> 
+            <label for="radio1">Female</label>
+          </div>
+          <div class="form-group-inline">
+            <input type="radio" id="radio2" name="gender" value="male"> 
+            <label for="radio2">Male</label>
+          </div>
+        </div>
+        
+        <!-- Select Dropdown -->
+        <div class="form-group">
+          <label for="select">Status</label>
+          <select id="select" name="status">
+            <option value="graduate">Graduate</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
+        
+        <!-- Textarea -->
+        <div class="form-group">
+          <label for="textarea">About you</label>
+          <textarea id="textarea" name="about" rows="4" placeholder="About You"></textarea>
+        </div>
+
+        <div class="form-group" formArrayName="languages">
+          <label>languages</label>
+         <input type="text" *ngFor="let lang of languages.controls;let i = index" [formControlName]="i">
+         <button type="button" (click)="addNewLanguage()">Add Language</button>
+        </div>
+  
+        <!-- Checkbox -->
+        <div class="form-group-inline">
+          <input type="checkbox" id="terms" name="terms">
+          <label for="terms">Agree to terms and conditions</label>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+          <input type="submit" value="Join Us"/>
+        </div>
+      </form>
+    </div>
+  </div>
+  

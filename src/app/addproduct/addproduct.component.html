@@ -1,0 +1,7 @@
+<form (ngSubmit)="addProduct()" [formGroup]="addProductForm">
+    name : <input type="text" formControlName="name"><br>
+    desc : <input type="text" formControlName="desc"><br>
+    price: <input type="text" formControlName="price"><br>
+    image: <input type="file" (change)="onFileChange($event)"><br>
+<input type="submit">
+</form>

@@ -1,0 +1,22 @@
+a{
+    width: 80%;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid blue;
+    color:blue ;
+margin-bottom: 10px;
+text-align: center;
+}
+
+div{
+    text-align: center;
+    width: 100%;
+    background-color: antiquewhite;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.active{
+    color: red;
+    border: 1px solid red;
+}
