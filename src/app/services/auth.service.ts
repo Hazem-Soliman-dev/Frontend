@@ -16,7 +16,8 @@ export class AuthService {
     string | null
   >(null);
 
-  apiURL = 'http://localhost:3000/user/login';
+  apiURL = 'http://localhost:3001/user/login';
+  signupAPI = 'https://localhost:3001/user';
   login(loginData: any): Observable<any> {
     return this._http.post<any>(this.apiURL, loginData).pipe(
       tap((res) => {
@@ -49,5 +50,15 @@ export class AuthService {
       return jwtDecode<any>(token);
     }
     return null;
+  }
+
+  signUp(name: any, email: any, password: any): Observable<any> {
+    const userType = '677a49f36a92236b2f2c71f0';
+    return this._http.post(`${this.signupAPI}`, {
+      name,
+      email,
+      password,
+      userType,
+    });
   }
 }

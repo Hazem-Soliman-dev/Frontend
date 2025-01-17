@@ -1,1 +1,8 @@
-<p>product-details works!</p>
+<div class="product-details">
+  <img [src]="product!.image" alt="{{ product!.name }}" />
+  <h1>{{ product!.name }}</h1>
+  <p>{{ product!.desc }}</p>
+  <p>Price: {{ product!.price }}</p>
+  <button class="back-btn" (click)="goBack()">Back</button>
+</div>
+

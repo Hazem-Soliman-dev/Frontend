@@ -1,7 +1,55 @@
-<form (ngSubmit)="addProduct()" [formGroup]="addProductForm">
-    name : <input type="text" formControlName="name"><br>
-    desc : <input type="text" formControlName="desc"><br>
-    price: <input type="text" formControlName="price"><br>
-    image: <input type="file" (change)="onFileChange($event)"><br>
-<input type="submit">
-</form>
+<div class="add-product-container">
+  <div class="form-box">
+    <h1>Add New Product</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input
+          type="text"
+          id="name"
+          #username="ngModel"
+          name="name"
+          ngModel
+          placeholder="Enter product name (e.g., iPhone 13 Pro)"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          #price="ngModel"
+          name="price"
+          ngModel
+          placeholder="Price"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          type="text"
+          #desc="ngModel"
+          name="desc"
+          ngModel
+          placeholder="description"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input
+          type="file"
+          #productImage="ngModel"
+          name="productImage"
+          (change)="filechange($event)"
+          ngModel
+          accept="image/*"
+        />
+      </div>
+
+      <button type="submit" class="submit-btn">Add Product</button>
+    </form>
+  </div>
+</div>

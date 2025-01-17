@@ -1,0 +1,12 @@
+.product-details{
+	margin-top: 70px;
+	font-size: 18px;
+	padding: 20px;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.5;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+	min-height: 90vh;
+	padding: 10px 20px;
+}

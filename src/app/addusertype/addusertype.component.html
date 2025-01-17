@@ -1,5 +1,38 @@
-<form (ngSubmit)="addNewType()" [formGroup] = "userTypeForm">
+<!-- add-user-type.component.html -->
+<div class="add-user-type-container">
+  <div class="form-box">
+    <h1>Add User Type</h1>
+    <form (submit)="onAddUserType()">
+      <div class="form-group">
+        <label for="user-type-name">User Type Name</label>
+        <input
+          type="text"
+          id="user-type-name"
+          [(ngModel)]="userType.name"
+          name="name"
+          placeholder="Enter user type name (e.g., Admin, Seller)"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="permissions">Permissions</label>
+        <textarea
+          id="permissions"
+          [(ngModel)]="userType.permissions"
+          name="permissions"
+          placeholder="List permissions separated by commas (e.g., create, edit, delete)"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Add User Type</button>
+    </form>
+  </div>
+</div>
+
+<!-- <form (ngSubmit)="addNewType()" [formGroup] = "userTypeForm">
 Name : <input type="text" formControlName="name"><br>
 desc : <input type="text" formControlName="desc"><br>
 <button>Add UserType</button>
-</form>
+</form> -->

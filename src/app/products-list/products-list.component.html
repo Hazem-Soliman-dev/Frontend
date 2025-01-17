@@ -1,6 +1,22 @@
-<div *ngFor="let product of products">
-  <img [src]="imageURL + product.imgeURL" />
-  <p>{{ product.name }}</p>
-  <p>{{ product.desc }}</p>
-  <p>Price: {{ product.price }}</p>
+<div class="products-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search products..." class="search-input" />
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <img
+        [src]="product.image"
+        alt="{{ product.name }}"
+        class="product-image"
+      />
+      <div class="product-details">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <p class="product-description">{{ product.desc }}</p>
+        <p class="product-price">${{ product.price }}</p>
+      </div>
+      <button class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button><br>
+      <button class="remove-btn" (click)="viewProduct(product._id)">View Details></button>
+    </div>
+  </div>
 </div>

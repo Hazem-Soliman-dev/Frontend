@@ -1,0 +1,71 @@
+/* add-user-type.component.css */
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+  }
+  
+  .add-user-type-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  
+  .form-box {
+	background: #fff;
+	padding: 20px 30px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 500px;
+  }
+  
+  .form-box h1 {
+	margin-bottom: 20px;
+	font-size: 24px;
+	text-align: center;
+	color: #333;
+  }
+  
+  .form-group {
+	margin-bottom: 15px;
+  }
+  
+  .form-group label {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #555;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+	border-color: #36d1dc;
+	outline: none;
+  }
+  
+  .submit-btn {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	background-color: #36d1dc;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+	background-color: #5b86e5;
+  }
+  

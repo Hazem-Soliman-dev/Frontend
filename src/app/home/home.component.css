@@ -1,3 +1,21 @@
+/* Hero Section */
+.container {
+  align-items: center;
+  margin-top: 60px;
+  height: 70vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;}
+
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 60px;
+  border-radius: 10px;
+}
+
 img{
-    max-width:600px;
+  height: 81vh;
 }

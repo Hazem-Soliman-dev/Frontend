@@ -32,4 +32,10 @@ isLogedIn = false
    this._authS.logout();
   }
 
+  isSidebarOpen = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
 }

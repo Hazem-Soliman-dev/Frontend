@@ -1,7 +1,71 @@
-div{
-    width: 100%;
-    height: 35px;
-    background-color: antiquewhite;
-    color: blue;
-    padding: 10px;
+/* app.component.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
+
+/* Theme Variables */
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+}
+
+body.dark-mode {
+  --bg-color: #333;
+  --text-color: #fff;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.header .actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+  position: relative;
+}
+
+.cart-btn .cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* Main Content and Sidebar styles remain unchanged */

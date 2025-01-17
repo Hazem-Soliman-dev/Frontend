@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RfComponent } from './rf/rf.component';
 import { AddusertypeComponent } from './addusertype/addusertype.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductsComponent } from './dashboard/products/products.component';
+import { OrdersComponent } from './dashboard/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { AddproductComponent } from './addproduct/addproduct.component';
     NotfoundComponent,
     RfComponent,
     AddusertypeComponent,
-    AddproductComponent
+    AddproductComponent,
+    CartComponent,
+    ProductsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

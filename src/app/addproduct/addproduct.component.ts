@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ProductService } from '../services/product.service';
+import { NgForm } from '@angular/forms';
+import { AddproduectService } from '../services/addproduct.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addproduct',
@@ -10,32 +11,33 @@ import { ProductService } from '../services/product.service';
   styleUrl: './addproduct.component.css'
 })
 export class AddproductComponent {
+  constructor(private Auth:AddproduectService,private router:Router) { }
+  file:any;
+  filechange(event:any){
+    if(event.target.files.length>0){
+     this.file=event.target.files[0];
+   }
+  }
+  onSubmit(data:NgForm){
 
-  constructor(private _productS : ProductService){}
-addProductForm : FormGroup = new FormGroup({
-  name : new FormControl(''),
-  desc : new FormControl(''),
-  price : new FormControl(''),
-  productImage : new FormControl(null),
-})
+    data.value.productImage=this.file;
+    let formData=new FormData();
+    formData.append('name',data.value?.name);
+    formData.append('desc',data.value?.desc);
+    formData.append('price',data.value?.price);
+    formData.append('productImage',this.file);
+    this.Auth.createProduct(formData).subscribe({
+      next: () => {
+        this.router.navigate(['/admin']);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    console.log('data Submitted tttty:', formData);
 
-onFileChange(event:any){
-if(event.target.files.length > 0){
-  const file = event.target.files[0];
-  this.addProductForm.patchValue({productImage : file})
+  }
 }
-}
-addProduct(){
-let formData = new FormData();
-formData.append('name',this.addProductForm.get('name')?.value);
-formData.append('desc',this.addProductForm.get('desc')?.value);
-formData.append('price',this.addProductForm.get('price')?.value);
-formData.append('productImage',this.addProductForm.get('productImage')?.value);
- 
-
-this._productS.addProduct(formData).subscribe(data=>console.log(data)
-)
 
 
-}
-}
+

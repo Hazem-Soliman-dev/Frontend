@@ -7,21 +7,19 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
- constructor(private _authS:AuthService,private _router:Router){}
+  constructor(private _authS: AuthService, private _router: Router) {}
 
-  login(loginForm:NgForm){
-    this._authS.login(loginForm.value).subscribe(
-     {
-      next : ()=> {this._router.navigate(['/dashboard'])
-        console.log(this._authS.decodeAccessToken())
+  login(loginForm: NgForm) {
+    this._authS.login(loginForm.value).subscribe({
+      next: () => {
+        this._router.navigate(['/dashboard']);
+        console.log(this._authS.decodeAccessToken());
       },
-      error: (err)=> console.log(err.message)
-     }
-    )
-console.log(loginForm.value);
-
+      error: (err) => console.log(err.message),
+    });
+    console.log(loginForm.value);
   }
 }

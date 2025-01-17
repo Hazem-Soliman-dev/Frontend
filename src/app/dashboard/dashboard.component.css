@@ -1,0 +1,19 @@
+a.active {
+	font-weight: bold;
+	color: #007bff;
+  }
+.container{
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.list-group{
+	width: 300px;
+    margin: 20px;
+}
+
+.list-group a {
+	text-decoration: none;
+	color: #333;
+}

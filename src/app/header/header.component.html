@@ -1,3 +1,9 @@
-<div>
-    <h4>my website</h4>
-</div>
+
+<header class="header">
+  <div class="actions">
+    <a routerLink="/cart" class="cart-btn">
+      🛒 <span class="cart-count">{{ getCartCount() }}</span>
+    </a>
+    <button class="theme-toggle-btn" (click)="toggleTheme()">🌙</button>
+  </div>
+</header>

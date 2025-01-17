@@ -10,14 +10,43 @@ import { UserService } from '../services/user.service';
   styleUrl: './addusertype.component.css'
 })
 export class AddusertypeComponent {
-constructor(private _userS:UserService){}
-  userTypeForm:FormGroup = new FormGroup({
-    name : new FormControl(''),
-    desc: new FormControl('')
-  })
+  userType = {
+    name: '',
+    permissions: '',
+  };
 
+  onAddUserType() {
+    if (!this.userType.name) {
+      alert('User Type Name is required.');
+      return;
+    }
 
-  addNewType(){
-    this._userS.addUserType(this.userTypeForm.value).subscribe(data=> console.log(data))
+    console.log('New User Type:', {
+      name: this.userType.name,
+      permissions: this.userType.permissions
+        .split(',')
+        .map((permission) => permission.trim()),
+    });
+
+    // Add logic for saving user type to backend or database
+    alert('User Type added successfully!');
+    this.resetForm();
   }
+
+  resetForm() {
+    this.userType = {
+      name: '',
+      permissions: '',
+    };
+  }
+// constructor(private _userS:UserService){}
+//   userTypeForm:FormGroup = new FormGroup({
+//     name : new FormControl(''),
+//     desc: new FormControl('')
+//   })
+
+
+//   addNewType(){
+//     this._userS.addUserType(this.userTypeForm.value).subscribe(data=> console.log(data))
+//   }
 }

@@ -1,121 +1,174 @@
-<div class="body">
-    <div class="form-container">
-      <form (ngSubmit)="postData(myForm)" #myForm = "ngForm">
-        <h2>Join US</h2>
-        
-        <!-- Text Input -->
-        <div class="form-group">
-          <label for="text">Username</label>
-          <input type="text" placeholder="Username" name="username" ngModel required #username = "ngModel">
-          <div class="msg" *ngIf="username.invalid && username.touched">
-            *username is required
-          </div>
-          <button (click)="change(myForm)" type="button">Change username</button>
+<!-- signup.component.html -->
+<div class="signup-container">
+  <div class="signup-box">
+    <h1>Sign Up</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          #username="ngModel"
+          name="username"
+          [(ngModel)]="user.username"
+          required
+          minlength="3"
+          placeholder="Name"
+        />
+        <div
+          class="vaild"
+          *ngIf="
+            myForm.controls['username']?.invalid &&
+            myForm.controls['username']?.touched
+          "
+        >
+          <small *ngIf="myForm.controls['username']?.errors?.['required']"
+            >Username is required.</small
+          >
+          <small *ngIf="myForm.controls['username']?.errors?.['minlength']"
+            >Username must be at least 3 characters.</small
+          >
         </div>
-        
-        <!-- Password Input -->
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" placeholder="Enter password" name="password" #password="ngModel" ngModel required>
-        <div class="msg" *ngIf="password.invalid && password.touched">
-            *password is required
-        </div>
-        </div>
-  
-        <!-- Re-type Password Input -->
-        <div class="form-group">
-          <label for="password">Re-type Password</label>
-          <input type="password" placeholder="Re-type Password" name="retypePassword" ngModel required #retypepassword = "ngModel" [pattern]="password.value">
-          <div class="msg" *ngIf="retypepassword.invalid && retypepassword.touched">
-<span *ngIf="retypepassword.errors?.['required']">*retype-password is required</span>
-<span *ngIf="retypepassword.errors?.['pattern']">*retype-password not match</span>
+      </div>
 
-          </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          #email="ngModel"
+          name="email"
+          [(ngModel)]="user.email"
+          required
+          email
+          placeholder="Email"
+        />
+        <div
+          class="vaild"
+          *ngIf="
+            myForm.controls['email']?.invalid &&
+            myForm.controls['email']?.touched
+          "
+        >
+          <small *ngIf="myForm.controls['email']?.errors?.['required']"
+            >Email is required.</small
+          >
+          <small *ngIf="myForm.controls['email']?.errors?.['email']"
+            >Invalid email format.</small
+          >
         </div>
-        
-        <!-- Email Input -->
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" placeholder="Enter email" name="email" ngModel required #email = "ngModel" email>
-          <div class="msg" *ngIf="email.invalid && email.touched">
-          <span *ngIf="email.errors?.['required']"> *email is required </span> 
-          <span *ngIf="email.errors?.['email']"> *wrong email format  </span>
-          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          #password="ngModel"
+          name="password"
+          [(ngModel)]="user.password"
+          required
+          minlength="6"
+          placeholder="Password"
+        />
+        <div
+          class="vaild"
+          *ngIf="
+            myForm.controls['password']?.invalid &&
+            myForm.controls['password']?.touched
+          "
+        >
+          <small *ngIf="myForm.controls['password']?.errors?.['required']"
+            >Password is required.</small
+          >
+          <small *ngIf="myForm.controls['password']?.errors?.['minlength']"
+            >Password must be at least 6 characters.</small
+          >
         </div>
-        
-        <!-- Number Input -->
-        <div class="form-group">
-          <label for="number">Age</label>
-          <input type="number" placeholder="Age" name="age" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          [(ngModel)]="user.confirmPassword"
+          placeholder="confirmPassword"
+          required
+        />
+        <div
+          class="vaild"
+          *ngIf="user.password !== user.confirmPassword && myForm.submitted"
+        >
+          <small>Passwords do not match.</small>
         </div>
-        
-        <!-- Date Input -->
-        <div class="form-group">
-          <label for="date">Birth Date</label>
-          <input type="date" name="birthDate" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="text"
+          #phone="ngModel"
+          name="phone"
+          [(ngModel)]="user.phone"
+          required
+          pattern="^\d{10}$"
+          placeholder="phone"
+        />
+        <div
+          class="vaild"
+          *ngIf="
+            myForm.controls['phone']?.invalid &&
+            myForm.controls['phone']?.touched
+          "
+        >
+          <small *ngIf="myForm.controls['phone']?.errors?.['required']"
+            >Phone is required.</small
+          >
+          <small *ngIf="myForm.controls['phone']?.errors?.['pattern']"
+            >Phone must be 10 digits.</small
+          >
         </div>
-        
-        <!-- URL Input -->
-        <div class="form-group">
-          <label for="url">LinkedIn URL</label>
-          <input type="url" placeholder="LinkedIn URL" name="linkedInURL" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          type="text"
+          #address="ngModel"
+          name="address"
+          [(ngModel)]="user.address"
+          required
+          minlength="10"
+          placeholder="address"
+        />
+        <div
+          class="vaild"
+          *ngIf="
+            myForm.controls['address']?.invalid &&
+            myForm.controls['address']?.touched
+          "
+        >
+          <small *ngIf="myForm.controls['address']?.errors?.['required']"
+            >Address is required.</small
+          >
+          <small *ngIf="myForm.controls['address']?.errors?.['minlength']"
+            >Address must be at least 10 characters.</small
+          >
         </div>
-        
-        <!-- Telephone Input -->
-        <div class="form-group">
-          <label for="tel">Phone NO.</label>
-          <input type="tel" placeholder="Phone NO." name="phone" ngModel #phone = "ngModel" required pattern="^[0-9]{11}$">
-          <div class="msg" *ngIf="phone.invalid && phone.touched">
-            <span *ngIf="phone.errors?.['required']">*phone number is required</span>
-            <span *ngIf="phone.errors?.['pattern']">*phone number should be 11 digits</span>
-          </div>
-        </div>
-        
-        <!-- File Input -->
-        <div class="form-group">
-          <label for="file">Your C.V</label>
-          <input type="file" name="cv" ngModel>
-        </div>
-        
-        <!-- Radio Buttons -->
-        <div class="form-group">
-          <label>Gender</label>
-          <div class="form-group-inline">
-            <input type="radio" id="radio1" name="gender" value="female" ngModel> 
-            <label for="radio1">Female</label>
-          </div>
-          <div class="form-group-inline">
-            <input type="radio" id="radio2" name="gender" value="male" ngModel> 
-            <label for="radio2">Male</label>
-          </div>
-        </div>
-        
-        <!-- Select Dropdown -->
-        <div class="form-group">
-          <label for="select">Status</label>
-          <select id="select" name="status" ngModel>
-            <option value="graduate">Graduate</option>
-            <option value="student">Student</option>
-          </select>
-        </div>
-        
-        <!-- Textarea -->
-        <div class="form-group">
-          <label for="textarea">About you</label>
-          <textarea id="textarea" name="about" rows="4" placeholder="About You" ngModel></textarea>
-        </div>
-  
-        <!-- Checkbox -->
-        <div class="form-group-inline">
-          <input type="checkbox" id="terms" name="terms" ngModel>
-          <label for="terms">Agree to terms and conditions</label>
-        </div>
-        
-        <!-- Submit Button -->
-        <div class="form-group text-center">
-          <input type="submit" value="Join Us"/>
-        </div>
-      </form>
-    </div>
+        <input
+          type="text"
+          #userType="ngModel"
+          name="userType"
+          ngModel
+          placeholder="userType"
+        />
+      </div>
+
+      <button type="submit" [disabled]="myForm.invalid" class="signup-btn">
+        Sign Up
+      </button>
+
+      <div class="login-link">
+        <p>Already have an account? <a href="/login">Login here</a></p>
+      </div>
+    </form>
   </div>
-  
+</div>
